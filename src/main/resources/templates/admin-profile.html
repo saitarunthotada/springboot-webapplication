@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    
+    <!-- Your Custom Style -->
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            text-align: center;
+            color: #ff9800;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .user-details {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+        }
+
+        .user-details h2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+
+        .welcome-message {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            color: #ffcc80;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .user-actions {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logout-button {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            background-color: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: auto;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logout-button:hover {
+            background-color: #ff6600;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+       
+        .search-input {
+            padding: 5px;
+            border: 1px solid #ff9800;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            background-color: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .search-button:hover {
+            background-color: #ff6600;
+        }
+
+        /* Styling for external links */
+        .external-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .external-link {
+            color: #f9d2b0;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 20px;
+            display: block;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .external-link:hover {
+            color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+<div class="backgroundimage-div">
+    <div class="user-details">
+        <h2>Admin Profile</h2>
+        <p th:text="${admin.name}" id="name" name="name" class="welcome-message"></p>
+        <p th:text="${admin.username}" id="username" name="username" class="welcome-message"></p>
+    </div>
+    <h1>Welcome to the Home Page</h1>
+    <div class="user-actions">
+        <a th:href="@{/admin-edit(username=${admin.username})}" class="external-link">Edit Profile Details</a>
+        <a th:href="@{/admin-viewall}" class="external-link">Show All Admin Details</a>
+        <form action="/logout" class="logout-link">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+    <div class="search-bar">
+        <input type="text" class="search-input" id="search-query-scholar" placeholder="Search Google Scholar">
+        <button class="search-button" onclick="searchGoogleScholar()">Google Scholar</button>
+    </div>
+    <!-- External links in the middle -->
+    <div class="external-links">
+        <a href="https://www.youtube.com" class="external-link">YouTube</a>
+        <a href="https://www.instagram.com" class="external-link">Instagram</a>
+        <a href="https://chat.openai.com" class="external-link">OpenAI Chat</a>
+        <a href="https://www.gmail.com" class="external-link">Gmail</a>
+        <a href="https://www.amity.edu" class="external-link">Amity Noida</a>
+    </div>
+    <!-- User actions (Logout) -->
+    <div class="user-actions">
+        <form action="/logout" class="logout-link">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Use th:href for URL and ${user.username} for parameter -->
+    
+    <script>
+        // JavaScript function to search Google
+        function searchGoogle() {
+            const query = document.getElementById("search-query-google").value;
+            if (query) {
+                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.location.href = googleSearchUrl;
+            }
+        }
+
+        // JavaScript function to search Google Scholar
+        function searchGoogleScholar() {
+            const query = document.getElementById("search-query-scholar").value;
+            if (query) {
+                const googleScholarUrl = `https://scholar.google.com/scholar?q=${encodeURIComponent(query)}`;
+                window.location.href = googleScholarUrl;
+            }
+        }
+    </script>
+</body>
+</html>

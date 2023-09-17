@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <style>
+        body {
+            font-family: 'Antipasto Pro', sans-serif;
+            background-color: #333; /* Dark gray background color for the body */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text color for the body */
+        }
+
+        h1 {
+            text-align: center;
+            color: #8a2be2; /* BlueViolet color for the heading */
+            font-size: 2.5rem; /* Larger font size for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #444; /* Slightly darker gray background color for the form */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for the form */
+            border-radius: 15px; /* Rounded corners for the form */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #555; /* Darker gray background color for input fields */
+            color: #ffcc80; /* Light yellow text color for input fields */
+            border-radius: 5px; /* Slightly rounded corners for input fields */
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: #666; /* Darker gray background color for input fields on focus */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #8a2be2; /* BlueViolet color for the submit button */
+            color: #fff; /* White text color for the submit button */
+            border: none;
+            border-radius: 5px; /* Slightly rounded corners for the submit button */
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #9932cc; /* Darker BlueViolet color for the submit button on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Update User Details</h1>
+    <form th:action="@{/user/update}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{name}" placeholder="Name" />
+        <input type="text" th:field="*{email}" placeholder="Email" />
+        <input type="text" th:field="*{address}" placeholder="Address" />
+        <input type="text" th:field="*{username}" placeholder="Username" readonly="readonly" />
+        <input type="password" th:field="*{password}" placeholder="Password" />
+        <!-- Add more input fields for other user details -->
+        <button type="submit">Update User</button>
+    </form>
+</body>
+</html>

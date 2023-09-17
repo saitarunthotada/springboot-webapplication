@@ -1,0 +1,139 @@
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin and User Details</title>    
+    <!-- Add CSS styles for table formatting -->
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #333; /* Dark gray background color for the body */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text color for the body */
+        }
+        
+        h1 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center;
+            color: #ff9800; /* Slightly brighter orange color for the heading */
+            font-size: 2.5rem; /* Larger font size for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        
+        h2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #ffa7a7; /* Slightly brighter orange color for the heading */
+                }
+
+
+        .container {    
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #444; /* Slightly darker gray background color for the container */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for the container */
+            border-radius: 15px; /* Rounded corners for the container */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            border: 1px solid #555; /* Darker gray border for table cells */
+            padding: 12px;
+            text-align: left;
+            background-color: #444; /* Dark gray background color for table headers */
+            color: #ffffff; /* Light yellow text color for table headers */
+            font-weight: bold; /* Make the text in table headers bold */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for background color change */
+        }
+        
+        th {
+            background-color: #555; /* Darker gray background for alternating table rows */
+        }
+        
+        tr:nth-child(even) td {
+            background-color: #555; /* Darker gray background for alternating table rows */
+        }
+    
+        tr:hover td {
+            background-color: #666; /* Slightly lighter gray background color on hover */
+        }
+
+        /* Style for the logout button */
+        .logout-button {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #ff9800; /* Orange background color for logout button */
+            color: #fff; /* White text color for logout button */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px; /* Add space below the tables */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for background color change */
+        }
+
+        .logout-button:hover {
+            background-color: #ff6600; /* Slightly darker orange on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DataBase List</h1>
+
+        <!-- Admin Table -->
+        <h2>Admin</h2>
+        <!-- ... (your existing admin table code) ... -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+            <tr th:each="admin : ${admins}">
+                <td th:text="${admin.id}"></td>
+                <td th:text="${admin.name}"></td>
+                <td th:text="${admin.username}"></td>
+                <td th:text="${admin.email}"></td>
+                <td th:text="${admin.address}"></td>
+            </tr>
+        </table>
+
+        <!-- User Table -->
+        <h2>User</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.address}"></td>
+            </tr>
+        </table>
+        <!-- Logout Button -->
+        <form th:action="@{/admin-viewall}" method="post">
+        </form>
+                <form th:action="@{/logout}" class="logout-link">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
