@@ -118,13 +118,6 @@
         <p th:text="${user.username}" id="username" name="username" class="welcome-message"></p>
     </div>
     <h1>Welcome to the Home Page</h1>
-    <!-- <div class="user-actions">
-        <a th:href="@{/admin-edit(username=${admin.username})}" target="_blank" class="external-link">Edit Profile Details</a>
-        <a th:href="@{/admin-viewall}" target="_blank" class="external-link">Show All Admin Details</a>
-        <form action="/logout" class="logout-link">
-            <button type="submit" class="logout-button">Logout</button>
-        </form>
-    </div> -->
     <div class="search-bar">
         <!-- <input type="text" class="search-input" id="search-query-google" placeholder="Search Google">
         <button class="search-button" onclick="searchGoogle()">Google Search</button> -->
@@ -150,15 +143,6 @@
     <!-- Use th:href for URL and ${user.username} for parameter -->
     
     <script>
-        // // JavaScript function to search Google
-        // function searchGoogle() {
-        //     const query = document.getElementById("search-query-google").value;
-        //     if (query) {
-        //         const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-        //         window.open(googleSearchUrl, "_blank");
-        //     }
-        // }
-
         // JavaScript function to search Google Scholar
         function searchGoogleScholar() {
             const query = document.getElementById("search-query-scholar").value;

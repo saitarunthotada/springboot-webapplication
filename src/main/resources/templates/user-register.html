@@ -62,24 +62,24 @@
         <form th:action="@{/user/register}" th:object="${user}" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label"><b>Name</b></label>
-                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name">
+                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern=".*\S+.*" required>
             </div>
             <div class="mb-3">
                 <label for="username" class="form-label"><b>Username</b></label>
-                <input type="text" th:field="*{username}" name="username" class="form-control" id="username" placeholder="Enter your username">
+                <input type="text" th:field="*{username}" name="username" class="form-control" id="username" placeholder="Enter your username" pattern=".*\S+.*" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Email</b></label>
-                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email">
+                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern=".*\S+.*" required>
             </div>
     
             <div class="mb-3">
                 <label for="password" class="form-label"><b>Password</b></label>
-                <input type="password" th:field="*{password}" name="password" class="form-control" id="password" placeholder="Enter your password">
+                <input type="password" th:field="*{password}" name="password" class="form-control" id="password" placeholder="Enter your password" pattern=".*\S+.*" required>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label"><b>Address</b></label>
-                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address">
+                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern=".*\S+.*" required>
             </div>
             <button type="submit" class="btn btn-primary"><b>Submit</b></button>
         </form>

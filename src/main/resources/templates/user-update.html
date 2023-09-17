@@ -61,15 +61,35 @@
 </head>
 <body>
     <h1>Update User Details</h1>
-    <form th:action="@{/user/update}" th:object="${user}" method="post">
+    <form th:action="@{/user-edit}" th:object="${admin}" method="post">
         <input type="hidden" th:field="*{id}" />
-        <input type="text" th:field="*{name}" placeholder="Name" />
-        <input type="text" th:field="*{email}" placeholder="Email" />
-        <input type="text" th:field="*{address}" placeholder="Address" />
-        <input type="text" th:field="*{username}" placeholder="Username" readonly="readonly" />
-        <input type="password" th:field="*{password}" placeholder="Password" />
-        <!-- Add more input fields for other user details -->
-        <button type="submit">Update User</button>
-    </form>
+        <div class="mb-3">
+            <label for="name" class="form-label"><b>Name</b></label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern=".*\S+.*" required>
+
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label"><b>Username</b></label>
+            <input type="text" th:field="*{username}" name="username" class="form-control" id="username" placeholder="Enter your username" readonly="readonly" pattern=".*\S+.*" required>
+
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern=".*\S+.*" required>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></p>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label"><b>Password</b></label>
+            <input type="password" th:field="*{password}" name="password" class="form-control" id="password" placeholder="Enter your password" pattern=".*\S+.*" required>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></p>
+
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label"><b>Address</b></label>
+            <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern=".*\S+.*" required>
+        </div>
+        <button type="submit" class="btn btn-primary"><b>Submit</b></button>
 </body>
 </html>

@@ -76,11 +76,11 @@
         <form method="post" th:action="@{/user/profile}" th:object="${user}">
             <div class="mb-3">
                 <label for="username" class="form-label"><b>Username</b></label>
-                <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
+                <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username" pattern=".*\S+.*" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label"><b>Password</b></label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" pattern=".*\S+.*" required>
             </div>
             <div class="center-button">
                 <button type="submit" class="btn btn-primary"><b>Submit</b></button>
