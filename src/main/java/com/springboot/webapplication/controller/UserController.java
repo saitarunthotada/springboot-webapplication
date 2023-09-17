@@ -78,14 +78,14 @@ public class UserController
 		}
 	}
 
-	@PostMapping("/user/update")
+	@PostMapping("/user/edit")
 	public String updateUser(@ModelAttribute User updateUser, Model model)
 	{
 		User updatedUser = userService.updateUser(updateUser);
 		if(updatedUser!=null)
 		{
 			model.addAttribute("updatedUser", updatedUser);
-			return "user-update";
+			return "user-profile";
 		}
 		else{
 			return "user-register";
