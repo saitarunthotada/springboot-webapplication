@@ -88,14 +88,19 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/admin-viewall")
+    @GetMapping("/admin-list")
     public String getAllAdmins(Model model) {
         List<Admin> admins = adminService.getAllAdminDetails();
         model.addAttribute("admins", admins);
+        return "admin-list";
+    }
 
+    @GetMapping("/user-list")
+    public String getAllUsers(Model model)
+    {
         List<User> users = userService.getAllUserDetails();
         model.addAttribute("users", users);
-        return "admin-list";
+        return "user-list";
     }
 
     @GetMapping("/logout")
