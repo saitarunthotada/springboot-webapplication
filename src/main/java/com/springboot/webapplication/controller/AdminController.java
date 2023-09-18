@@ -27,8 +27,15 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/admin-register")
+    @GetMapping("/")
     public String index(Model model) {
+        Admin admin = new Admin();
+        model.addAttribute("admin", admin);
+        return "index";
+    }
+
+    @GetMapping("/admin-register")
+    public String register(Model model) {
         Admin admin = new Admin();
         model.addAttribute("admin", admin);
         return "admin-register";
@@ -92,15 +99,26 @@ public class AdminController {
     public String getAllAdmins(Model model) {
         List<Admin> admins = adminService.getAllAdminDetails();
         model.addAttribute("admins", admins);
-        return "admin-list";
+                return "admin-list";
     }
 
-    @GetMapping("/user-list")
-    public String getAllUsers(Model model)
+    @GetMapping("/user/list")
+    public String getAllUsers(Model model) 
     {
-        List<User> users = userService.getAllUserDetails();
+    List<User> users = userService.getAllUserDetails();
         model.addAttribute("users", users);
         return "user-list";
+    }
+
+    @GetMapping("/admin-delete")
+    public String deleteAdminUser(@RequestParam String username, Model model)
+    {
+        Admin admin = adminService.getAdminByUsername(username);
+        if(admin!=null)
+        {
+        adminService.deleteAdminByUsername(admin);
+        }
+        return "redirect:/admin-register";
     }
 
     @GetMapping("/logout")
