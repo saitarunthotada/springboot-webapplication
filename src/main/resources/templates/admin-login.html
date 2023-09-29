@@ -96,7 +96,7 @@
         <h1>
            Account Login
         </h1>
-        <form method="post" th:action="@{/admin-login/profile}" th:object="${admin}">
+        <form method="post" th:action="@{/admin/login/profile}" th:object="${admin}">
             <div class="mb-3">
                 <label for="username" class="form-label"><b>Username</b></label>
                 <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username" pattern=".*\S+.*" required>
@@ -111,10 +111,6 @@
             </div>
             <p th:if="${param.error}" style="color: blueviolet" class="alert alert-danger">Invalid username or password</p>
         </form>
-    </div>
-    <div class="container">
-    Don't have an account?
-    <a th:href="@{/admin-register}" class="signup">Sign up</a>
     </div>
 </body>
 </html>

@@ -19,7 +19,7 @@ public class Admin
 
 	@NotEmpty(message = "name is required")
 	@Size(min = 2, max= 50)
-	@Column(nullable = false)
+	@Column(nullable = false, unique = false)
 	private String name;
 
 	@Column(nullable = false, unique = true)
@@ -27,7 +27,7 @@ public class Admin
 	@Size(min = 2, max= 50)
 	private String email;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = false)
 	@NotEmpty(message = "address is required")
 	@Size(min = 2, max= 50)
 	private String address;

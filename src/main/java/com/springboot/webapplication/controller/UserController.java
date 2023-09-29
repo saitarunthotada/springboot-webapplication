@@ -45,7 +45,7 @@ public class UserController
 		return "user-login";
 	}
 
-	@PostMapping("user/profile")
+	@PostMapping("user/login")
 	public String viewUserDetails(@RequestParam String username, @RequestParam String password, Model model)
 	{
 		User user = userService.viewUserDetails(username);

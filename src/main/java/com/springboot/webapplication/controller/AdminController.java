@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.springboot.webapplication.model.Admin;
@@ -33,7 +32,7 @@ public class AdminController {
         model.addAttribute("admin", admin);
         return "index";
     }
-
+    
     @GetMapping("/admin-register")
     public String register(Model model) {
         Admin admin = new Admin();
@@ -42,23 +41,19 @@ public class AdminController {
     }
 
     @PostMapping("/admin-register")
-    public String adminRegister(@ModelAttribute("admin") @Validated Admin admin, BindingResult result) {
-        if (result.hasErrors()) {
-            return "admin-register"; // Return to the form with validation errors
-        }
-
+    public String adminRegister(@ModelAttribute("admin") Admin admin) {
         adminService.registerAdmin(admin);
         return "admin-login";
     }
 
-    @GetMapping("/admin-login")
+    @GetMapping("/admin/login")
     public String adminHomePage(Model model) {
         Admin admin = new Admin();
         model.addAttribute("admin", admin);
         return "admin-login";
     }
 
-    @PostMapping("/admin-login/profile")
+    @PostMapping("/admin/login/profile")
     public String getAdminDetails(@RequestParam("username") String username, @RequestParam String password, Model model) {
         Admin admin = adminService.getAdminByUsername(username);
         if (admin != null && admin.getPassword().equals(password)) {
@@ -70,7 +65,8 @@ public class AdminController {
         return "redirect:/admin-login?error=true";
     }
 
-    @GetMapping("/admin-edit")
+    
+    @GetMapping("/admin/edit")
     public String showUpdatePage(@RequestParam String username, Model model) {
         Admin admin = adminService.getAdminByUsername(username);
         if (admin != null) {
@@ -80,12 +76,8 @@ public class AdminController {
         return "error"; // Handle case when admin is not found
     }
 
-    @PostMapping("/admin-edit")
-    public String updateAdminDetails(@ModelAttribute @Validated Admin updatedAdmin, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "admin-update"; // Return to the form with validation errors
-        }
-
+    @PostMapping("/admin/edit")
+    public String updateAdminDetails(@ModelAttribute Admin updatedAdmin, Model model) {
         updatedAdmin = adminService.updateAdminDetails(updatedAdmin);
         if (updatedAdmin != null) {
             model.addAttribute("admin", updatedAdmin);
@@ -95,7 +87,7 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/admin-list")
+    @GetMapping("/admin/list")
     public String getAllAdmins(Model model) {
         List<Admin> admins = adminService.getAllAdminDetails();
         model.addAttribute("admins", admins);
@@ -110,7 +102,7 @@ public class AdminController {
         return "user-list";
     }
 
-    @GetMapping("/admin-delete")
+    @GetMapping("/admin/delete")
     public String deleteAdminUser(@RequestParam String username, Model model)
     {
         Admin admin = adminService.getAdminByUsername(username);
