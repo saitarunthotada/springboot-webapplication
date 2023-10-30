@@ -65,12 +65,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Admin Registration</h1>
+        <h1>User Update</h1>
         <form th:action="@{/user/edit}" th:object="${user}" method="post">
             <input type="hidden" th:field="*{id}" />
             <div class="mb-3">
                 <label for="name" class="form-label"><b>Name</b></label>
-                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern=".*\S+.*" required>
+                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern="[a-z]+" required>
                 <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></p>
 
             </div>
@@ -81,7 +81,8 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Email</b></label>
-                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern=".*\S+.*" required>
+                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern="[a-zA-Z0-9._%+-]+@(?:[a-z]+\.)+(?:com|in)"
+ required>
                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></p>
 
             </div>
@@ -94,7 +95,7 @@
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label"><b>Address</b></label>
-                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern=".*\S+.*" required>
+                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern="[a-z]+" required>
             </div>
             <button type="submit" class="btn btn-primary"><b>Submit</b></button>
         </form>

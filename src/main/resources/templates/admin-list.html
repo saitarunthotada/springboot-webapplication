@@ -117,7 +117,6 @@
         <h1>ADMIN PROFILE DATA</h1>
 
         <!-- Admin Table -->
-        <!-- Admin Table -->
         <h2>Admin</h2>
         <table>
             <tr>
@@ -126,8 +125,8 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Action</th> <!-- Add a new column for the delete button -->
-            </tr>
+                <th>Action</th> <!--column for the delete button -->
+            </tr> 
             <tr th:each="admin : ${admins}" class="container">
                 <td th:text="${admin.id}"></td>
                 <td th:text="${admin.name}"></td>

@@ -71,7 +71,7 @@
         <form th:action="@{/user/register}" th:object="${user}" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label"><b>Name</b></label>
-                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern=".*\S+.*" required>
+                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name" pattern="[a-z]+" required>
             </div>
             <div class="mb-3">
                 <label for="username" class="form-label"><b>Username</b></label>
@@ -79,7 +79,8 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Email</b></label>
-                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern=".*\S+.*" required>
+                <input type="email" th:field="*{email}" name="email" class="form-control" id="email" placeholder="Enter your email" pattern="[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(?:com|in)"
+required>
             </div>
     
             <div class="mb-3">
@@ -88,7 +89,7 @@
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label"><b>Address</b></label>
-                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern=".*\S+.*" required>
+                <input type="text" th:field="*{address}" name="address" class="form-control" id="address" placeholder="Enter your address" pattern="[a-z]+" required>
             </div>
             <button type="submit" class="btn btn-primary"><b>Submit</b></button>
         </form>

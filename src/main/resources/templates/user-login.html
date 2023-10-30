@@ -97,7 +97,7 @@
         <h1>
            Account Login
         </h1>
-        <form method="post" th:action="@{/user/profile}" th:object="${user}">
+        <form method="post" th:action="@{/user/login}" th:object="${user}">
             <div class="mb-3">
                 <label for="username" class="form-label"><b>Username</b></label>
                 <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username" pattern=".*\S+.*" required>

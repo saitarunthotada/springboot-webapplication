@@ -1,5 +1,7 @@
 package com.springboot.webapplication.model;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user-table")
+@Table(name="user")
 public class User
 {
 	@Id
@@ -20,6 +22,7 @@ public class User
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	@Column(nullable = false)
 	private String address;
 
 	@Column(nullable = false, unique = true)
@@ -86,6 +89,11 @@ public class User
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public void hashPassword(PasswordEncoder passwordEncoder)
+	{
+		this.password = passwordEncoder.encode(this.password);
 	}
 
 }
